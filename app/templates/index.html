@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky{% endblock %}
+
+
+{% block page_content %}
+<div class="page-header">
+        <h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}!</h1>
+        {% if not known %}
+            <p>Pleased to meet you!</p>
+        {% else %}
+            <p>Happy to see you again!</p>
+        {% endif %}
+</div>
+{{ wtf.quick_form(form) }}
+
+<h3>Registered Users</h3>
+<ul style="list-style: none;">
+    {% for user in users %}
+        <li style="display: inline; font-weight: bolder; color: blue;">{{ user.username }}</li>
+    {% endfor %}
+</ul>
+<br> <hr>
+<p>The local date and time is {{ moment(current_time).format('LLL') }}.</p>
+<p>That was {{ moment(current_time).fromNow(refresh=True) }} </p>
+{% endblock %}
+
