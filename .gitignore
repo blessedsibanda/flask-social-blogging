@@ -3,3 +3,6 @@ __pycache__/
 venv/
 *.pyc
 hello.py
+data-dev.sqlite
+Pipfile
+Pipfile.lock

@@ -1,11 +1,17 @@
 from datetime import datetime 
 from flask import render_template, session, redirect, url_for, current_app
+from flask_login import login_required
 from .import main
 from .forms import NameForm
 from .. import db 
 from ..models import User
 from ..email import send_email
 
+
+@main.route('/secret')
+@login_required
+def secret():
+    return 'Only authenticated users are allowed!'
 
 @main.route('/', methods=['GET','POST'])
 def index():
